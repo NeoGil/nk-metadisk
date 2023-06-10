@@ -19,4 +19,9 @@ class Fragment extends Model
     {
         return $this->belongsTo(Guide::class);
     }
+
+    public function scopeAllPaginate($query, $numbers)
+    {
+        return $query->orderBy('created_at', 'desc')->paginate($numbers);
+    }
 }

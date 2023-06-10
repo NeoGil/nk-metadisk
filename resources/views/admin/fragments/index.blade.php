@@ -24,13 +24,13 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Список методичек</h3>
+                <h3 class="card-title">Список QR-Фрагментов</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <a href="{{ route('guides.create') }}" class="btn btn-primary mb-3">Добавить
-                    методичьку</a>
-                @if (count($guides))
+                <a href="{{ route('fragments.create') }}" class="btn btn-primary mb-3">Добавить
+                    QR-Фрагмент</a>
+                @if (count($fragments))
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover text-nowrap">
                             <thead>
@@ -41,16 +41,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($guides as $guide)
+                            @foreach($fragments as $fragment)
                                 <tr>
-                                    <td>{{ $guide->id }}</td>
-                                    <td>{{ $guide->title }}</td>
+                                    <td>{{ $fragment->id }}</td>
+                                    <td>{{ $fragment->title }}</td>
                                     <td>
-                                        <a href="{{ route('guides.edit', ['guide' => $guide->id]) }}" class="btn btn-info btn-sm float-left mr-1">
+                                        <a href="{{ route('fragments.edit', ['fragment' => $fragment->id]) }}" class="btn btn-info btn-sm float-left mr-1">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
-                                        <form action="{{ route('guides.destroy', ['guide' => $guide->id]) }}" method="post" class="float-left">
+                                        <form action="{{ route('fragments.destroy', ['fragment' => $fragment->id]) }}" method="post" class="float-left">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm"
@@ -71,7 +71,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-                {{ $guides->links('vendor.pagination.bootstrap-4') }}
+                {{ $fragments->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
         <!-- /.card -->

@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\GuideController;
+use App\Http\Controllers\Admin\FragmentController;
+use App\Http\Controllers\Admin\GuideController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,5 @@ Route::get('/', function () {
 Route::prefix('aliroom')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
     Route::resource('/guides', GuideController::class);
+    Route::resource('/fragments', FragmentController::class);
 });

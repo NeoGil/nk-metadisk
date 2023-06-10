@@ -217,6 +217,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-word"></i>
+                            <p>
+                                QR-Фрагменты
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('fragments.index') }} " class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список QR-Фрагментов</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('fragments.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Новый QR-Фрагмент</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

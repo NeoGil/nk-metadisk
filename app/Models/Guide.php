@@ -18,4 +18,10 @@ class Guide extends Model
     {
         return $this->hasMany(Fragment::class);
     }
+
+
+    public function scopeAllPaginate($query, $numbers)
+    {
+        return $query->orderBy('created_at', 'desc')->paginate($numbers);
+    }
 }

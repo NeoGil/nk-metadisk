@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Fragment;
 use App\Models\Guide;
 use Illuminate\Http\Request;
 
-class GuideController extends Controller
+class FragmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,8 @@ class GuideController extends Controller
      */
     public function index()
     {
-
-        $guides = Guide::paginate(10);
-        return view('admin.guides.index', compact('guides'));
+        $fragments = Fragment::allPaginate(10);
+        return view('admin.fragments.index', compact('fragments'));
     }
 
     /**
@@ -26,7 +27,8 @@ class GuideController extends Controller
      */
     public function create()
     {
-        return view('admin.guides.create');
+        $guides = Guide::pluck('title', 'id')->all();
+        return view('admin.fragments.create', compact('guides'));
     }
 
     /**
@@ -39,10 +41,13 @@ class GuideController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'body' => 'required',
+            'guide_id' => 'required|integer',
         ]);
-        Guide::create($request->all());
-        return redirect()->route('guides.index')->with('success', 'Методичька добавлена');
+
+        Fragment::create($request->all());
+
+        return redirect()->route('fragments.index')->with('success', 'QR-Фрагмент добавлен');
     }
 
     /**
@@ -64,8 +69,9 @@ class GuideController extends Controller
      */
     public function edit($id)
     {
-        $guide = Guide::find($id);
-        return view('admin.guides.edit', compact('guide'));
+        $fragment = Fragment::find($id);
+        $guides = Guide::pluck('title', 'id')->all();
+        return view('admin.fragments.edit', compact('fragment', 'guides'));
     }
 
     /**
@@ -79,11 +85,14 @@ class GuideController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'body' => 'required',
+            'guide_id' => 'required|integer',
         ]);
-        $guide = Guide::find($id);
-        $guide->update($request->all());
-        return redirect()->route('guides.index')->with('success', 'Изменения сохранены');
+
+        $fragment = Fragment::find($id);
+        $fragment->update($request->all());
+
+        return redirect()->route('fragments.index')->with('success', 'Изменения сохранены');
     }
 
     /**
@@ -94,7 +103,7 @@ class GuideController extends Controller
      */
     public function destroy($id)
     {
-        Guide::destroy($id);
-        return redirect()->route('guides.index')->with('success', 'Методичька удалена');
+        Fragment::destroy($id);
+        return redirect()->route('fragments.index')->with('success', 'QR-Фрагмент удален');
     }
 }

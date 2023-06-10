@@ -18,14 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::namespace('Admin')->prefix('aliroom')->group(function () {
-    Route::get('/', 'MainController@index')->name('admin.index');
-});*/
-
-/*Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('/', 'MainController@index')->name('admin.index');
-});*/
-
-Route::prefix('aliroom')->namespace('Admin')->group(function () {
+Route::prefix('aliroom')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
 });

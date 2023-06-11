@@ -33,3 +33,4 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/{fragment}', [\App\Http\Controllers\FragmentController::class, 'show']);

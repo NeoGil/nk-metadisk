@@ -9,12 +9,6 @@
                 <div class="col-sm-6">
                     <h1>Создание QR-Фрагмента</h1>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
-                    </ol>
-                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -73,5 +67,10 @@
         </div><!-- /.container-fluid -->
     </section>
         <!-- /.content -->
-
+    <script src="{{ asset('assets/admin/ckeditor4-major/ckeditor.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var editor = CKEDITOR.replace('body');
+        });
+    </script>
 @endsection

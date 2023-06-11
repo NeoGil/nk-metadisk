@@ -8,12 +8,6 @@
                 <div class="col-sm-6">
                     <h1>Главная</h1>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
-                    </ol>
-                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -48,6 +42,9 @@
                                     <td>
                                         <a href="{{ route('fragments.edit', ['fragment' => $fragment->id]) }}" class="btn btn-info btn-sm float-left mr-1">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="http://qrcoder.ru/code/?http://{{ request()->getHttpHost() }}/{{ $fragment->id }}&4&0" download target="_blank" class="btn btn-success btn-sm float-left mr-1">
+                                            <i class="fas fa-download"></i>
                                         </a>
 
                                         <form action="{{ route('fragments.destroy', ['fragment' => $fragment->id]) }}" method="post" class="float-left">
